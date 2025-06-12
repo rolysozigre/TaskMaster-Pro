@@ -44,7 +44,7 @@ const Navbar: FC = () => {
           </button>
           <ul className="dropdown-menu dropdown-menu-end shadow">
             <li className="dropdown-item-text fw-bold">ozigre</li>
-            <li className="dropdown-item-text text-muted">Admin</li>
+            <li className="dropdown-item-text text-muted">Développeur</li>
             <li><hr className="dropdown-divider" /></li>
             <li><a className="dropdown-item" href="/profile">Profil</a></li>
             <li><a className="dropdown-item" href="/logout">Déconnexion</a></li>
