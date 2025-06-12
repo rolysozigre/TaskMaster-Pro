@@ -62,6 +62,26 @@ button:focus-visible {
 .task-title:hover {
   color: #2a65b0;
 }
+.editor-content {
+  min-height: 150px;
+  outline: none;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.comment-display p {
+  margin-bottom: 0.5rem;
+}
+.comment-display ul,
+.comment-display ol {
+  padding-left: 1.5rem;
+}
+
+.editor-content p {
+  margin: 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
