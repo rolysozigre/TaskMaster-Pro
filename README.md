@@ -118,6 +118,7 @@
   Ouvre une Pull Request
 
 
+<<<<<<< HEAD
   Made with 💻 + ❤️ by Roland Ozigre rolyssagesse@gmail.com
 
 
@@ -128,3 +129,6 @@
 
 
 
+=======
+  Made with 💻 + ❤️ by Roland Ozigre rolyssagesse@gmail.com
+>>>>>>> a3d3d8e (Initialisation du projet avec Vite + React + TypeScript + ESLint + Prettier + Docker setup)
