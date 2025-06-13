@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import TaskCard from "./TaskCard";
-import type { Task } from "../types";
+import type { Task } from "../types/index";
 
 type Props = {
   title: string;

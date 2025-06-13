@@ -1,6 +1,6 @@
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import type { ReactNode } from "react";
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import type { ReactNode } from 'react';
 
 interface LayoutProps {
   children: ReactNode;

@@ -1,29 +1,56 @@
-import type { FC } from "react";
-import { useState } from "react";
-import { mockTasks } from "../data/mockTasks";
-import "bootstrap/dist/css/bootstrap.min.css";
+import type { FC } from 'react';
+import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+type Task = {
+  id: string;
+  title: string;
+  description: string;
+  priority: string;
+  status: string;
+  start: string;
+  end: string;
+  assignee?: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+  creator: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+};
 
 const priorityClass = (priority: string) => {
   switch (priority) {
-    case "Haute":
-      return "bg-danger text-white";
-    case "Moyenne":
-      return "bg-warning text-dark";
-    case "Basse":
-      return "bg-success text-white";
+    case 'Haute':
+      return 'bg-danger text-white';
+    case 'Moyenne':
+      return 'bg-warning text-dark';
+    case 'Basse':
+      return 'bg-success text-white';
     default:
-      return "bg-secondary";
+      return 'bg-secondary';
   }
 };
 
 const Home: FC = () => {
-  const categories = ["À faire", "En cours", "Terminé"];
-  const priorities = ["Haute", "Moyenne", "Basse"];
+  const categories = ['À faire', 'En cours', 'Terminé'];
+  const priorities = ['Haute', 'Moyenne', 'Basse'];
 
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [filterStatus, setFilterStatus] = useState<string | null>(null);
   const [filterPriority, setFilterPriority] = useState<string | null>(null);
 
-  const filteredTasks = mockTasks.filter((task) => {
+  useEffect(() => {
+    fetch('/api/tasks')
+      .then((res) => res.json())
+      .then((data) => setTasks(data.tasks))
+      .catch((err) => console.error('Erreur lors du fetch des tâches:', err));
+  }, []);
+
+  const filteredTasks = tasks.filter((task) => {
     const statusMatch = filterStatus ? task.status === filterStatus : true;
     const priorityMatch = filterPriority ? task.priority === filterPriority : true;
     return statusMatch && priorityMatch;
@@ -39,12 +66,14 @@ const Home: FC = () => {
           <label className="form-label">Filtrer par statut :</label>
           <select
             className="form-select"
-            value={filterStatus || ""}
+            value={filterStatus || ''}
             onChange={(e) => setFilterStatus(e.target.value || null)}
           >
             <option value="">Tous les statuts</option>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
         </div>
@@ -53,12 +82,14 @@ const Home: FC = () => {
           <label className="form-label">Filtrer par priorité :</label>
           <select
             className="form-select"
-            value={filterPriority || ""}
+            value={filterPriority || ''}
             onChange={(e) => setFilterPriority(e.target.value || null)}
           >
             <option value="">Toutes les priorités</option>
             {priorities.map((prio) => (
-              <option key={prio} value={prio}>{prio}</option>
+              <option key={prio} value={prio}>
+                {prio}
+              </option>
             ))}
           </select>
         </div>
@@ -134,25 +165,23 @@ const Home: FC = () => {
         </div>
       ) : (
         // Affichage par défaut en colonnes
-        <div className="row" style={{ overflowX: "auto" }}>
+        <div className="row" style={{ overflowX: 'auto' }}>
           {categories.map((status) => {
             const tasksByStatus = filteredTasks.filter((task) => task.status === status);
             return (
               <div
                 key={status}
                 className="col-md-4 mb-3"
-                style={{ maxHeight: "80vh", overflowY: "auto" }}
+                style={{ maxHeight: '80vh', overflowY: 'auto' }}
               >
                 <div className="card border-0 shadow-sm h-100">
-                  <div className="card-header bg-light fw-bold text-center">
-                    {status}
-                  </div>
+                  <div className="card-header bg-light fw-bold text-center">{status}</div>
                   <div className="card-body d-flex flex-column gap-3">
                     {tasksByStatus.map((task) => (
                       <div
                         key={task.id}
                         className="card border-start border-1"
-                        style={{ borderColor: "#007bff" }}
+                        style={{ borderColor: '#007bff' }}
                       >
                         <div className="card-body p-3">
                           <h6 className="fw-bold mb-1">
