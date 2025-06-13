@@ -16,7 +16,6 @@ const Navbar: FC = () => {
       </a>
 
       <div className="ms-auto d-flex align-items-center gap-3">
-
         {/* Notifications */}
         <div className="dropdown hover-dropdown">
           <button className="btn btn-light position-relative">
@@ -26,8 +25,12 @@ const Navbar: FC = () => {
             </span>
           </button>
           <ul className="dropdown-menu dropdown-menu-end shadow">
-            <li><span className="dropdown-item">3 tâches attribuées</span></li>
-            <li><span className="dropdown-item">3 nouveaux messages</span></li>
+            <li>
+              <span className="dropdown-item">3 tâches attribuées</span>
+            </li>
+            <li>
+              <span className="dropdown-item">3 nouveaux messages</span>
+            </li>
           </ul>
         </div>
 
@@ -45,12 +48,21 @@ const Navbar: FC = () => {
           <ul className="dropdown-menu dropdown-menu-end shadow">
             <li className="dropdown-item-text fw-bold">ozigre</li>
             <li className="dropdown-item-text text-muted">Développeur</li>
-            <li><hr className="dropdown-divider" /></li>
-            <li><a className="dropdown-item" href="/profile">Profil</a></li>
-            <li><a className="dropdown-item" href="/logout">Déconnexion</a></li>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li>
+              <a className="dropdown-item" href="/profile">
+                Profil
+              </a>
+            </li>
+            <li>
+              <a className="dropdown-item" href="/logout">
+                Déconnexion
+              </a>
+            </li>
           </ul>
         </div>
-
       </div>
     </nav>
   );
