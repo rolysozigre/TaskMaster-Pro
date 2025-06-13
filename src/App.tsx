@@ -6,9 +6,13 @@ import CreateTask from './pages/CreateTask';
 import Settings from './pages/Settings';
 import Layout from './components/Layout/Layout';
 import EditTask from './pages/EditTask';
+import { useTheme } from './context/ThemeContext';
 
 export default function App() {
+  const { theme } = useTheme();
+  const { colorMode } = useTheme();
   return (
+    <div className={`app-wrapper ${colorMode} ${theme === 'mui' ? 'theme-material' : 'theme-shadcn'}`}>
     <BrowserRouter>
       <Layout>
         <Routes>
@@ -22,5 +26,6 @@ export default function App() {
         </Routes>
       </Layout>
     </BrowserRouter>
+    </div>
   );
 }

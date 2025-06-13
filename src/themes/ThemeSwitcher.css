@@ -1,0 +1,70 @@
+.theme-toggle-btn-fixed {
+    position: fixed;
+    top: 8rem; /* comme demandé */
+    right: 0;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+  }
+  
+  .theme-toggle-btn-fixed:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .theme-panel-drawer {
+    position: fixed;
+    top: 0;
+    margin-top: 9rem;
+    right: -300px; /* caché */
+    width: 300px;
+    height: 60vh;
+    border-radius: 26px;
+    background-color: #fff;
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    z-index: 9999;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .theme-panel-drawer.open {
+    right: 0; /* visible */
+  }
+  
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .theme-section {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .theme-section h4 {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+  }  

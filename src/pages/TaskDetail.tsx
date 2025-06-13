@@ -71,7 +71,7 @@ const TaskDetail: FC = () => {
   };
   const navigate = useNavigate();
   const handleDelete = async () => {
-    const confirmDelete = window.confirm("Es-tu sûr de vouloir supprimer cette tâche ?");
+    const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cette tâche ?");
     if (!confirmDelete) return;
 
     try {
@@ -81,7 +81,7 @@ const TaskDetail: FC = () => {
 
       if (!res.ok) throw new Error('Échec de la suppression de la tâche.');
 
-      navigate('/'); // Redirige vers la liste
+      navigate('/'); 
     } catch (err: any) {
       alert(err.message);
     }
