@@ -2,6 +2,8 @@ import type { FC, FormEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
+import { Dropdown } from 'react-bootstrap';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Modal, Button } from 'react-bootstrap';
@@ -67,6 +69,24 @@ const TaskDetail: FC = () => {
       setEditorData('');
     }
   };
+  const navigate = useNavigate();
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("Es-tu sûr de vouloir supprimer cette tâche ?");
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`/api/tasks/${task.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) throw new Error('Échec de la suppression de la tâche.');
+
+      navigate('/'); // Redirige vers la liste
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
 
   if (loading) return <div className="container py-5">Chargement de la tâche...</div>;
   if (error || !task) return <div className="container py-5 text-danger">{error || 'Tâche introuvable.'}</div>;
@@ -75,13 +95,20 @@ const TaskDetail: FC = () => {
     <div className="container py-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>Détail de la tâche</h2>
-        <Link
-          to={`/tasks/${task.id}/edit`}
-          className="btn btn-primary shadow-sm text-white"
-          style={{ }}
-        >
-          Modifier
-        </Link>
+        <Dropdown>
+          <Dropdown.Toggle variant="primary" className="shadow-sm text-white">
+            Actions
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to={`/tasks/${task.id}/edit`}>
+              Modifier
+            </Dropdown.Item>
+            <Dropdown.Item className="text-danger" onClick={handleDelete}>
+              Supprimer
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
       <div className="card shadow-sm">
         <div className="card-header d-flex justify-content-between align-items-center">
