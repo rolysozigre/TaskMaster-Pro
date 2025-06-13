@@ -1,27 +1,30 @@
-// src/context/ThemeContext.tsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState} from 'react';
+import  type{ReactNode } from 'react';
 
-type Theme = "mui" | "shadcn";
+type Theme = 'mui' | 'shadcn';
+type ColorMode = 'normal' | 'gray' | 'dark';
 
-interface ThemeContextType {
+const ThemeContext = createContext<{
   theme: Theme;
   setTheme: (theme: Theme) => void;
-}
+  colorMode: ColorMode;
+  setColorMode: (mode: ColorMode) => void;
+}>({
+  theme: 'mui',
+  setTheme: () => {},
+  colorMode: 'normal',
+  setColorMode: () => {},
+});
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("mui");
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useState<Theme>('mui');
+  const [colorMode, setColorMode] = useState<ColorMode>('normal');
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, colorMode, setColorMode }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error("useTheme must be used inside ThemeProvider");
-  return context;
-};
+export const useTheme = () => useContext(ThemeContext);
