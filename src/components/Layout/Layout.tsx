@@ -11,8 +11,10 @@ function Layout({ children }: LayoutProps) {
     <div className="d-flex">
       <Sidebar />
       <div className="flex-grow-1">
+        <div className="layout-page">
         <Navbar />
-        <main className="p-4">{children}</main>
+        <div className="content-wrapper" style={{ overflowY: 'auto', flex: 1, minHeight: 0 }}>{children}</div>
+        </div>
       </div>
     </div>
   );

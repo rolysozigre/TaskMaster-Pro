@@ -162,7 +162,7 @@ const EditTask: FC = () => {
 
         {/* Bouton Enregistrer */}
         <div className="mt-4 d-flex justify-content-end">
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-secondary">
             Enregistrer les modifications
           </button>
         </div>
