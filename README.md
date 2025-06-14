@@ -1,6 +1,7 @@
 # TaskMaster Pro
 
-**TaskMaster Pro** est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
+**TaskMaster Pro** 
+est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
 
 ---
 
@@ -66,13 +67,14 @@
   2- make install
 
   ```bash
-   -----PRODUCTION-----
-  3- make prod-deploy 
-  4- make print_links
-
   -----Developpement-----
   3- make dev-deploy 
   4- make print_links
+
+   -----PRODUCTION-----
+  3- make prod-deploy
+  
+  NB: En production il faudra adpter les liens api pour avoir les vraies données car MirageJs n\'est utilisé qu\'en environnement de developpement.
 
   Pour rebuilder après des modifications majeures, il 
     make dev-rebuild ou make prod-rebuild
