@@ -1,6 +1,6 @@
 # TaskMaster Pro
 
-**TaskMaster Pro** est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
+**TaskMaster Pro** est une application web moderne de gestion de tâches. Ell**TaskMaster Pro** est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
 
 ---
 
@@ -117,7 +117,6 @@
   Push (git push origin feature/ma-fonctionnalite)
   Ouvre une Pull Request
 
-
 <<<<<<< HEAD
   Made with 💻 + ❤️ by Roland Ozigre rolyssagesse@gmail.com
 
@@ -131,4 +130,3 @@
 
 =======
   Made with 💻 + ❤️ by Roland Ozigre rolyssagesse@gmail.com
->>>>>>> a3d3d8e (Initialisation du projet avec Vite + React + TypeScript + ESLint + Prettier + Docker setup)

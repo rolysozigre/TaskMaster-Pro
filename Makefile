@@ -14,9 +14,12 @@ help:
 	@echo "  make format        → Formate avec Prettier"
 	@echo "  make test          → Lance les tests"
 	@echo "  make code_check    → Lint + Format + Test"
-	@echo "  make docker_up     → Lance l’environnement dockerisé"
-	@echo "  make docker_build  → Build l’image Docker"
-	@echo "  make docker_down   → Stoppe l’environnement Docker"
+	@echo "  make dev-build  → Build l’image Docker en developpement"
+	@echo "  make dev-up     → Lance l’environnement dockerisé en dev"
+	@echo "  make dev-down   → Stoppe l’environnement Docker en dev"
+	@echo "  make prod-build  → Build l’image Docker en production"
+	@echo "  make prod-up  → Lance l’environnement dockerisé en production"
+	@echo "  make prod-down   → Stoppe l’environnement Docker en prod"
 
 install:
 	npm install
@@ -37,22 +40,34 @@ code_check: lint format test
 
 code_fix:
 	npx eslint . --fix
+# === DEV ===
+dev-up:
+	docker compose -f compose.dev.yml up
 
-up:
-	docker compose up
+dev-build:
+	docker compose -f compose.dve.yml --build
 
-build:
-	docker compose up --build
+dev-deploy: dev-build dev-up
 
-rebuild:
-	docker compose down && docker compose up --build
+dev-down:
+	docker compose -f compose.dev.yml down
 
-down:
-	docker compose down
+# === PROD ===
+
+prod-build:
+	docker compose -f compose.yml build
+
+prod-up:
+	docker compose -f compose.yml up -d
+
+prod-deploy: prod-build prod-up
+
+prod-down:
+	docker compose -f compose.yml down
 
 logs:
 	docker compose logs -f
 
 print_links:
-	@echo "✅ Accès à l'application : http://localhost:3000"
+	@echo "✅ Accès à l'application : http://localhost:5173"
 
