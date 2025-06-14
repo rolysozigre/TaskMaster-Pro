@@ -7,11 +7,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { ThemeSwitcher } from "./themes/ThemeSwitcher";
 
 import { makeServer } from './mirage/server.ts';
-<<<<<<< HEAD
-if (process.env.NODE_ENV == 'development') {
-=======
 if (process.env.NODE_ENV === 'development' || process.env.REACT_APP_ENABLE_MIRAGE === 'true') {
->>>>>>> origin/master
   makeServer();
 }
 

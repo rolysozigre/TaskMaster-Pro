@@ -36,7 +36,8 @@ format:
 test:
 	npm run test
 
-code_check: lint format test
+code_check: 
+	lint format test
 
 code_fix:
 	npx eslint . --fix
@@ -45,13 +46,10 @@ dev-up:
 	docker compose -f compose.dev.yml up
 
 dev-build:
-<<<<<<< HEAD
-	docker compose -f compose.dve.yml --build
-=======
 	docker compose -f compose.dev.yml build
->>>>>>> origin/master
 
-dev-deploy: dev-build dev-up
+dev-deploy: 
+	dev-build dev-up
 
 dev-down:
 	docker compose -f compose.dev.yml down
@@ -64,7 +62,8 @@ prod-build:
 prod-up:
 	docker compose -f compose.yml up -d
 
-prod-deploy: prod-build prod-up
+prod-deploy: 
+	prod-build prod-up
 
 prod-down:
 	docker compose -f compose.yml down
@@ -73,10 +72,6 @@ logs:
 	docker compose logs -f
 
 print_links:
-<<<<<<< HEAD
-	@echo "✅ Accès à l'application : http://localhost:5173"
-=======
 	@echo "✅ Accès à l'application en local: http://localhost:5173"
 	@echo "✅ Accès à l'application en production: http://localhost"
->>>>>>> origin/master
 

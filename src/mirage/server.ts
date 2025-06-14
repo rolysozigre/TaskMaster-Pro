@@ -2,10 +2,7 @@ import { createServer, Model, Server } from 'miragejs';
 import type{Registry} from 'miragejs';
 import {mockTasks } from '../data/mockTasks';
 import { mockUsers} from '../data/mockUsers';
-<<<<<<< HEAD
-=======
 import { Response } from 'miragejs';
->>>>>>> origin/master
 
 type AppModels = {
   user: typeof Model;
@@ -52,10 +49,6 @@ export function makeServer({ environment = 'development' } = {}): AppServer {
         this.delete('/tasks/:id', (schema: any, request) => {
           return schema.tasks.find(request.params.id)?.destroy();
         });
-<<<<<<< HEAD
-  
-        this.get('/users', (schema: any) => schema.users.all());
-=======
         this.post('/login', (schema, request) => {
           const { username, password } = JSON.parse(request.requestBody);     
           if (username === 'admin' && password === 'admin') {
@@ -79,7 +72,6 @@ export function makeServer({ environment = 'development' } = {}): AppServer {
           if (!user) return new Response(401, {}, { error: 'Non autorisé' });
           return user.attrs;
         });        
->>>>>>> origin/master
         this.get('/users/:id', (schema: any, request) => schema.users.find(request.params.id));
     },
   });
