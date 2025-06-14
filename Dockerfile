@@ -6,6 +6,13 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+<<<<<<< HEAD
+=======
+# 🔐 Injection de variables d’environnement
+ENV REACT_APP_ENABLE_MIRAGE=true \
+    NODE_ENV=production
+
+>>>>>>> origin/master
 COPY . .
 
 RUN npm run build

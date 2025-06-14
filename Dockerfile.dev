@@ -5,6 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
+<<<<<<< HEAD
+=======
+ENV NODE_ENV=development
+>>>>>>> origin/master
 
 COPY . .
 
