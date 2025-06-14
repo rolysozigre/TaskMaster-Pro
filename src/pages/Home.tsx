@@ -114,7 +114,7 @@ const Home: FC = () => {
           {filteredTasks.map((task) => (
             <div key={task.id} className="col-md-4 mb-4">
               <div className="card shadow-sm h-100">
-                <div className="card-body p-3">
+                <div className="card-body p-3 task-item">
                   <h6 className="fw-bold mb-1">
                     <a href={`/tasks/${task.id}`} className="text-decoration-none task-title">
                       {task.title}
@@ -175,7 +175,7 @@ const Home: FC = () => {
                 style={{ maxHeight: '80vh', overflowY: 'auto' }}
               >
                 <div className="card border-0 shadow-sm h-100">
-                  <div className="card-header bg-light fw-bold text-center">{status}</div>
+                  <div className="card-header bg-light fw-bold text-center task-item-header">{status}</div>
                   <div className="card-body d-flex flex-column gap-3">
                     {tasksByStatus.map((task) => (
                       <div
@@ -183,7 +183,7 @@ const Home: FC = () => {
                         className="card border-start border-1"
                         style={{ borderColor: '#007bff' }}
                       >
-                        <div className="card-body p-3">
+                        <div className="card-body p-3 task-item">
                           <h6 className="fw-bold mb-1">
                             <a
                               href={`/tasks/${task.id}`}

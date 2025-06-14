@@ -1,30 +1,55 @@
-import { createContext, useContext, useState} from 'react';
-import  type{ReactNode } from 'react';
+// context/ThemeContext.tsx
+import { createContext, useContext, useState, useEffect } from 'react';
 
-type Theme = 'mui' | 'shadcn';
-type ColorMode = 'normal' | 'gray' | 'dark';
+type UIType = 'mui' | 'shadcn';
+type ModeType = 'light' | 'dark';
 
-const ThemeContext = createContext<{
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  colorMode: ColorMode;
-  setColorMode: (mode: ColorMode) => void;
-}>({
-  theme: 'mui',
-  setTheme: () => {},
-  colorMode: 'normal',
-  setColorMode: () => {},
-});
+interface ThemeContextType {
+  ui: UIType;
+  mode: ModeType;
+  setUi: (ui: UIType) => void;
+  setMode: (mode: ModeType) => void;
+}
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('mui');
-  const [colorMode, setColorMode] = useState<ColorMode>('normal');
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [ui, setUi] = useState<UIType>('mui');
+  const [mode, setMode] = useState<ModeType>('light');
+
+  // Optionnel : persistance locale
+  useEffect(() => {
+    const savedUi = localStorage.getItem('ui') as UIType;
+    const savedMode = localStorage.getItem('mode') as ModeType;
+    if (savedUi) setUi(savedUi);
+    if (savedMode) setMode(savedMode);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('ui', ui);
+    localStorage.setItem('mode', mode);
+  }, [ui, mode]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+  
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [mode]);
+  
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, colorMode, setColorMode }}>
-      {children}
+    <ThemeContext.Provider value={{ ui, mode, setUi, setMode }}>
+      <div className={mode === 'dark' ? 'dark' : ''}>{children}</div>
     </ThemeContext.Provider>
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error('useTheme must be used within a ThemeProvider');
+  return context;
+};

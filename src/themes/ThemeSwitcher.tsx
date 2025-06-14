@@ -1,51 +1,62 @@
 import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import "./ThemeSwitcher.css";
+import { FaSun, FaMoon, FaReact } from "react-icons/fa";
+import { SiTailwindcss } from "react-icons/si";
 
 export const ThemeSwitcher = () => {
-  const { theme, setTheme, colorMode, setColorMode } = useTheme();
+  const { ui, setUi, mode, setMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {/* Bouton collé à droite */}
+      {/* Bouton flottant fixé à droite */}
       <button
         className="theme-toggle-btn-fixed"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Changer le thème"
-        style={{height: '5px', lineHeight: '1px', marginTop: '8rem', borderRadius: '8px'}}
       >
         <i className="bi bi-gear"></i>
       </button>
 
-      {/* Panneau glissant */}
+      {/* Drawer latéral */}
       <div className={`theme-panel-drawer ${isOpen ? "open" : ""}`}>
         <div className="drawer-header">
           <h3>Réglages</h3>
           <button onClick={() => setIsOpen(false)} className="close-btn">✖</button>
         </div>
 
-        <div className="theme-section">
-          <h4>🎨 Couleur</h4>
-          <select
-            value={colorMode}
-            onChange={(e) => setColorMode(e.target.value as any)}
+        <div className="drawer-content">
+          <h4>Interface</h4>
+          <div className="d-flex bloc-buttton">
+          <button
+            onClick={() => setUi('mui')}
+            className={`theme-btn ${ui === 'mui' ? 'active' : ''}`}
           >
-            <option value="normal">Normal</option>
-            <option value="gray">Gris</option>
-            <option value="dark">Sombre</option>
-          </select>
-        </div>
-
-        <div className="theme-section mt-3">
-          <h4>💡 UI Kit</h4>
-          <select
-            value={theme}
-            onChange={(e) => setTheme(e.target.value as any)}
+            <FaReact /> Material UI
+          </button>
+          <button
+            onClick={() => setUi('shadcn')}
+            className={`theme-btn ${ui === 'shadcn' ? 'active' : ''}`}
           >
-            <option value="mui">Material UI</option>
-            <option value="shadcn">ShadCN</option>
-          </select>
+            <SiTailwindcss /> ShadCN
+          </button>
+          </div>
+          <h4>Thème</h4>
+          <div className="d-flex bloc-buttton">
+          <button
+            onClick={() => setMode('light')}
+            className={`theme-btn ${mode === 'light' ? 'active' : ''}`}
+          >
+            <FaSun /> Clair
+          </button>
+          <button
+            onClick={() => setMode('dark')}
+            className={`theme-btn ${mode === 'dark' ? 'active' : ''}`}
+          >
+            <FaMoon /> Sombre
+          </button>
+          </div>
         </div>
       </div>
     </>

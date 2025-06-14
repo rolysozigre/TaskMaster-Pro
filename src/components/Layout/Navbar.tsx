@@ -8,7 +8,8 @@ import '../../assets/css/navbar.css';
 const Navbar: FC = () => {
   return (
     <nav
-      className="navbar navbar-expand-lg px-4 py-2 shadow-sm"
+      id="layout-navbar"
+      className="navbar navbar-expand-lg p-2 shadow-sm layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
       style={{ backgroundColor: '#FAFAFA' }}
     >
       <a className="navbar-brand fw-bold" href="/">
