@@ -11,7 +11,7 @@ function Layout({ children }: LayoutProps) {
   const { isMenuOpen } = useUI(); 
   return (
     <div className="d-flex">
-      <div className={`d-none d-md-block ${isMenuOpen ? 'd-block' : ''}`}>
+      <div className={`d-md-block ${isMenuOpen ? 'd-block' : 'd-none'}`} style={{zIndex: '9999'}}>
       <Sidebar />
       </div>
       <div className="flex-grow-1">

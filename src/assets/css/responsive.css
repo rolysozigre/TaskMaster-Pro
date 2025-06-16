@@ -22,14 +22,12 @@
         width: 20px;
         height: 20px;
     }
+  }
+
+  @media (max-width: 772px) {
     .layout-page {
         width: 100%;
         margin-left: auto !important;
-    }
-    @media (min-width: 992px) {
-        .layout-page {
-          margin-left: 16rem !important;
-        }
     }
   }
     
