@@ -30,4 +30,12 @@
         margin-left: auto !important;
     }
   }
+  .leftbloc {
+    transition: transform 0.3s ease-in-out;
+  }
+  .hide-sidebar:hover{
+    background-color: #dc354538;
+    color: #FAFAFA;
+  }
+  
     

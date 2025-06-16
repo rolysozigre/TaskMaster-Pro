@@ -2,9 +2,14 @@ import '../../assets/css/sidebar.css';
 import { useUI } from '../../context/UIContext';
 
 function Sidebar() {
-  //const { isMenuOpen } = useUI();
+  const { toggleMenu } = useUI();
   return (
-    <aside id='layout-menu' className={`layout-menu menu-vertical menu bg-menu-theme p-3 vh-100 d-md-block`} style={{ width: '250px' }}>
+    <aside id='layout-menu' className={`leftbloc layout-menu menu-vertical menu bg-menu-theme p-3 vh-100 d-md-block`} style={{ width: '250px' }}>
+      <div className="d-flex justify-content-end d-md-none">
+        <button className="hide-sidebar btn btn-outline-secondary mb-3" onClick={toggleMenu}>
+          ✕
+        </button>
+      </div>
       <h4 className="mb-4 mt-4">TaskMaster Pro</h4>
       <nav className="nav flex-column">
         <a className="nav-link" href="/">
