@@ -1,3 +1,4 @@
+import { useUI } from '../../context/UIContext';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import type { ReactNode } from 'react';
@@ -7,9 +8,12 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
+  const { isMenuOpen } = useUI(); 
   return (
     <div className="d-flex">
+      <div className={`d-none d-md-block ${isMenuOpen ? 'd-block' : ''}`}>
       <Sidebar />
+      </div>
       <div className="flex-grow-1">
         <div className="layout-page">
         <Navbar />

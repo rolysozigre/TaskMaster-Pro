@@ -112,7 +112,7 @@ const Home: FC = () => {
         // Affichage à plat par lignes de 3
         <div className="row">
           {filteredTasks.map((task) => (
-            <div key={task.id} className="col-md-4 mb-4">
+            <div key={task.id} className="col-12 col-md-6 col-lg-4 mb-4">
               <div className="card shadow-sm h-100">
                 <div className="card-body p-3 task-item">
                   <h6 className="fw-bold mb-1">
@@ -171,7 +171,7 @@ const Home: FC = () => {
             return (
               <div
                 key={status}
-                className="col-md-4 mb-3"
+                className="col-12 col-md-6 col-lg-4 mb-4"
                 style={{ maxHeight: '80vh', overflowY: 'auto' }}
               >
                 <div className="card border-0 shadow-sm h-100">

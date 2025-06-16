@@ -3,8 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../../assets/css/navbar.css';
+import { useUI } from '../../context/UIContext';
 
 const Navbar: FC = () => {
+  const { toggleMenu, isMenuOpen } = useUI();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [notifMenuOpen, setNotifMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -27,14 +29,19 @@ const Navbar: FC = () => {
   return (
     <nav
       id="layout-navbar"
-      className="navbar navbar-expand-lg p-2 shadow-sm layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+      className="navbar navbar-expand-lg p-2 shadow-sm layout-navbar container-xxl navbar-detached align-items-center bg-navbar-theme"
       style={{ backgroundColor: '#FAFAFA' }}
     >
-      <a className="navbar-brand fw-bold" href="/">
-        TaskMaster
-      </a>
-
-      <div className="ms-auto d-flex align-items-center gap-3">
+    <button
+        className="btn btn-outline-secondary d-md-none"
+        onClick={toggleMenu}
+      >
+        ☰
+      </button>
+    <a className="navbar-brand fw-bold" href="/">
+      TaskMaster
+    </a>
+    <div className={`ms-auto d-flex align-items-center gap-3 flex-column flex-md-row ${isMenuOpen ? '' : 'd-none d-md-flex'}`}>
         {/* Notifications */}
         <div className="dropdown position-relative" ref={notifMenuRef}>
           <button

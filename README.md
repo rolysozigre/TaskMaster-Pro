@@ -62,12 +62,16 @@ est une application web moderne de gestion de tâches. Elle propose une interfac
   ---
 
   ### III-b 🧪 Demarrage du projet
-  -----Developpement  avec Docker et vite  port 5-----
+  -----Developpement  avec Docker et vite  -----
 
     1- make start 
     2- make install
     3- make dev-deploy 
     4- make print_links
+    5-lancer l'url  http://localhost:5173/
+    6- pour le login:
+      user: admin
+      password: admin
 
   ----- PRODUCTION avec Docker et Nginx + vite -----
   

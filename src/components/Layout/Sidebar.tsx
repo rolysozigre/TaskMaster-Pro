@@ -1,8 +1,13 @@
 import '../../assets/css/sidebar.css';
+import { useUI } from '../../context/UIContext';
 
 function Sidebar() {
+  const { isMenuOpen } = useUI();
   return (
-    <aside id='layout-menu' className="layout-menu menu-vertical menu bg-menu-theme p-3 vh-100" style={{ width: '250px' }}>
+    <aside id='layout-menu' className={`layout-menu menu-vertical menu bg-menu-theme p-3 vh-100
+    ${
+        isMenuOpen ? 'd-block' : 'd-none'
+      } d-md-block`} style={{ width: '250px' }}>
       <h4 className="mb-4 mt-4">TaskMaster Pro</h4>
       <nav className="nav flex-column">
         <a className="nav-link" href="/">
