@@ -24,6 +24,12 @@
     }
     .layout-page {
         width: 100%;
+        margin-left: auto !important;
+    }
+    @media (min-width: 992px) {
+        .layout-page {
+          margin-left: 16rem !important;
+        }
     }
   }
     

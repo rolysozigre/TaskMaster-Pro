@@ -8,13 +8,16 @@ type AppModels = {
   user: typeof Model;
   task: typeof Model;
 };
-type AppFactories = {};
+type AppFactories = Record<string, never>; 
 
 type AppRegistry = Registry<AppModels, AppFactories>;
 
 type AppServer = Server<AppRegistry>;
+type ServerOptions = {
+  environment?: string;
+};
 
-export function makeServer({ environment = 'development' } = {}): AppServer {
+export function makeServer({ environment = 'development' }: ServerOptions = {}): AppServer {
     return createServer<AppModels, AppFactories>({
     environment,
     models: {
