@@ -22,7 +22,6 @@ function ProtectedRoute({ children }: { children: JSX.Element }) {
       setLoading(false);
     });
   }, []);
-
   if (loading) return <div>Chargement...</div>;
   if (!user) return <Navigate to="/login" replace />;
 

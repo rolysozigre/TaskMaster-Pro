@@ -1,11 +1,7 @@
 # TaskMaster Pro
 
-<<<<<<< HEAD
-**TaskMaster Pro** est une application web moderne de gestion de tâches. Ell**TaskMaster Pro** est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
-=======
 **TaskMaster Pro** 
 est une application web moderne de gestion de tâches. Elle propose une interface flexible, une simulation backend avec MirageJS, une gestion dynamique des thèmes (UI & mode clair/sombre), le tout encapsulé dans une architecture Docker prête pour la production et le développement continu via CI/CD.
->>>>>>> origin/master
 
 ---
 
@@ -66,30 +62,21 @@ est une application web moderne de gestion de tâches. Elle propose une interfac
   ---
 
   ### III-b 🧪 Demarrage du projet
+  -----Developpement  avec Docker et vite  port 5-----
+
+    1- make start 
+    2- make install
+    3- make dev-deploy 
+    4- make print_links
+
+  ----- PRODUCTION avec Docker et Nginx + vite -----
   
-  1 - make start 
-  2- make install
-
-  ```bash
-<<<<<<< HEAD
-   -----PRODUCTION-----
-  3- make prod-deploy 
-  4- make print_links
-
-=======
->>>>>>> origin/master
-  -----Developpement-----
-  3- make dev-deploy 
-  4- make print_links
-
-<<<<<<< HEAD
-=======
-   -----PRODUCTION-----
-  3- make prod-deploy
+    1- make start 
+    2- make install
+    3- make prod-deploy
   
   NB: En production il faudra adpter les liens api pour avoir les vraies données car MirageJs n\'est utilisé qu\'en environnement de developpement.
 
->>>>>>> origin/master
   Pour rebuilder après des modifications majeures, il 
     make dev-rebuild ou make prod-rebuild
 
@@ -121,10 +108,24 @@ est une application web moderne de gestion de tâches. Elle propose une interfac
     .github/workflows/ci.yml
     Elle effectue :
     🧪 Lint + build de l’app
+    
+## VI 🌐 Déploiement en production (Nginx + HTTPS + CI/CD)
+  Configuration serveur (Docker + Nginx)
+  L'application peut être déployée sur un serveur Ubuntu avec Docker et Nginx installés.
+  une fois connecté au server via ssh, lancer les commandes suivantes pour preparer l'environnement:
+    sudo apt update
+    sudo apt install docker.io docker-compose nginx -y
+    sudo apt install make
+  La configuration nginx se trouve .nginx/default.
+  Il faudra par la suite activer le https avec ces commandes:
+    sudo apt install certbot python3-certbot-nginx
+    sudo certbot --nginx -d taskmaster-pro.com
 
-    🚀 Déploiement vers une cible (Docker Hub, VPS, Vercel, etc.)
 
-## VI 🤝 Contribution
+
+
+
+## VII 🤝 Contribution
   
   Les contributions sont les bienvenues. Pour toute suggestion ou bug :
   Fork ce repo https://github.com/rolysozigre/TaskMaster-Pro.git

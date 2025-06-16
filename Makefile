@@ -36,8 +36,7 @@ format:
 test:
 	npm run test
 
-code_check: 
-	lint format test
+code_check: lint format test
 
 code_fix:
 	npx eslint . --fix
@@ -48,8 +47,7 @@ dev-up:
 dev-build:
 	docker compose -f compose.dev.yml build
 
-dev-deploy: 
-	dev-build dev-up
+dev-deploy: dev-build dev-up
 
 dev-down:
 	docker compose -f compose.dev.yml down
@@ -62,8 +60,7 @@ prod-build:
 prod-up:
 	docker compose -f compose.yml up -d
 
-prod-deploy: 
-	prod-build prod-up
+prod-deploy: prod-build prod-up
 
 prod-down:
 	docker compose -f compose.yml down
